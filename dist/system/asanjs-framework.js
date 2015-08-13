@@ -1,7 +1,7 @@
 System.register([], function (_export) {
     "use strict";
 
-    var NoOpBinder, Binding, DomReacher;
+    var NoOpBinder, Binding, DomReacherController, DomReacher;
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -64,14 +64,14 @@ System.register([], function (_export) {
 
             _export("Binding", Binding);
 
-            DomReacher = (function () {
-                function DomReacher() {
-                    _classCallCheck(this, DomReacher);
+            DomReacherController = (function () {
+                function DomReacherController() {
+                    _classCallCheck(this, DomReacherController);
 
                     this.adapters = [];
                 }
 
-                DomReacher.prototype.install = function install(adapter) {
+                DomReacherController.prototype.install = function install(adapter) {
                     if (!adapter.name) {
                         throw new TypeError("Argument 'adapter' is not a valid adapter instance. An valid adaper would have a property named 'name'.");
                     }
@@ -82,18 +82,18 @@ System.register([], function (_export) {
                     this.adapters.push(adapter);
                 };
 
-                DomReacher.prototype.uninstall = function uninstall(name) {
+                DomReacherController.prototype.uninstall = function uninstall(name) {
                     var index = this.adapters.findIndex(function (i) {
                         return i.name == name;
                     });
                     this.adapters.splice(index, 1);
                 };
 
-                DomReacher.prototype.uninstallAll = function uninstallAll(name) {
+                DomReacherController.prototype.uninstallAll = function uninstallAll(name) {
                     this.adapters = [];
                 };
 
-                DomReacher.prototype.reach = function reach(controller, element) {
+                DomReacherController.prototype.reach = function reach(controller, element) {
                     for (var _iterator = this.adapters, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
                         var _ref;
 
@@ -112,8 +112,10 @@ System.register([], function (_export) {
                     }
                 };
 
-                return DomReacher;
+                return DomReacherController;
             })();
+
+            DomReacher = new DomReacherController();
 
             _export("DomReacher", DomReacher);
         }

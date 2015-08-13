@@ -58,16 +58,17 @@ define(["exports"], function (exports) {
     }
 
     var Binding = CreateBindingHolder();
+
     exports.Binding = Binding;
 
-    var DomReacher = (function () {
-        function DomReacher() {
-            _classCallCheck(this, DomReacher);
+    var DomReacherController = (function () {
+        function DomReacherController() {
+            _classCallCheck(this, DomReacherController);
 
             this.adapters = [];
         }
 
-        DomReacher.prototype.install = function install(adapter) {
+        DomReacherController.prototype.install = function install(adapter) {
             if (!adapter.name) {
                 throw new TypeError("Argument 'adapter' is not a valid adapter instance. An valid adaper would have a property named 'name'.");
             }
@@ -78,18 +79,18 @@ define(["exports"], function (exports) {
             this.adapters.push(adapter);
         };
 
-        DomReacher.prototype.uninstall = function uninstall(name) {
+        DomReacherController.prototype.uninstall = function uninstall(name) {
             var index = this.adapters.findIndex(function (i) {
                 return i.name == name;
             });
             this.adapters.splice(index, 1);
         };
 
-        DomReacher.prototype.uninstallAll = function uninstallAll(name) {
+        DomReacherController.prototype.uninstallAll = function uninstallAll(name) {
             this.adapters = [];
         };
 
-        DomReacher.prototype.reach = function reach(controller, element) {
+        DomReacherController.prototype.reach = function reach(controller, element) {
             for (var _iterator = this.adapters, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
                 var _ref;
 
@@ -108,8 +109,9 @@ define(["exports"], function (exports) {
             }
         };
 
-        return DomReacher;
+        return DomReacherController;
     })();
 
+    var DomReacher = new DomReacherController();
     exports.DomReacher = DomReacher;
 });

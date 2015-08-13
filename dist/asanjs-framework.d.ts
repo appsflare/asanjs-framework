@@ -12,11 +12,12 @@ declare module 'asanjs-framework' {
     unbind(): any;
   }
   export const Binding: any;
-  export class DomReacher {
+  class DomReacherController {
     constructor();
     install(adapter: any): any;
     uninstall(name: any): any;
     uninstallAll(name: any): any;
     reach(controller: any, element: any): any;
   }
+  export const DomReacher: any;
 }
