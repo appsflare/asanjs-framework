@@ -4,13 +4,14 @@ declare module 'asanjs-framework' {
     bind(): any;
     unbind(): any;
   }
-  export class Binding {
+  class Binding {
     constructor();
     use(binder: any): any;
     configure(): any;
     bind(): any;
     unbind(): any;
   }
+  export const Binding: any;
   export class DomReacher {
     constructor();
     install(adapter: any): any;

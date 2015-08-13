@@ -14,25 +14,31 @@ export class NoOpBinder {
 
 }
 
-export class Binding {
+function CreateBindingHolder() {
+    class Binding {
 
-    constructor() {
-        this.use(new NoOpBinder());
+        constructor() {
+            this.use(new NoOpBinder());
+        }
+
+        use(binder) {
+            this._binder = binder;
+        }
+
+        configure() {
+            this._binder.configure(...arguments);
+        }
+
+        bind() {
+            this._binder.bind(...arguments);
+        }
+
+        unbind() {
+            this._binder.unbind(...arguments);
+        }
     }
 
-    use(binder) {
-        this._binder = binder;
-    }
-
-    configure() {
-        this._binder.configure(...arguments);
-    }
-
-    bind() {
-        this._binder.bind(...arguments);
-    }
-
-    unbind() {
-        this._binder.unbind(...arguments);
-    }
+    return new Binding();
 }
+
+export const Binding = CreateBindingHolder();

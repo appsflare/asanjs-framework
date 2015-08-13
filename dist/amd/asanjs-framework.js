@@ -21,38 +21,43 @@ define(["exports"], function (exports) {
 
     exports.NoOpBinder = NoOpBinder;
 
-    var Binding = (function () {
-        function Binding() {
-            _classCallCheck(this, Binding);
+    function CreateBindingHolder() {
+        var Binding = (function () {
+            function Binding() {
+                _classCallCheck(this, Binding);
 
-            this.use(new NoOpBinder());
-        }
+                this.use(new NoOpBinder());
+            }
 
-        Binding.prototype.use = function use(binder) {
-            this._binder = binder;
-        };
+            Binding.prototype.use = function use(binder) {
+                this._binder = binder;
+            };
 
-        Binding.prototype.configure = function configure() {
-            var _binder;
+            Binding.prototype.configure = function configure() {
+                var _binder;
 
-            (_binder = this._binder).configure.apply(_binder, arguments);
-        };
+                (_binder = this._binder).configure.apply(_binder, arguments);
+            };
 
-        Binding.prototype.bind = function bind() {
-            var _binder2;
+            Binding.prototype.bind = function bind() {
+                var _binder2;
 
-            (_binder2 = this._binder).bind.apply(_binder2, arguments);
-        };
+                (_binder2 = this._binder).bind.apply(_binder2, arguments);
+            };
 
-        Binding.prototype.unbind = function unbind() {
-            var _binder3;
+            Binding.prototype.unbind = function unbind() {
+                var _binder3;
 
-            (_binder3 = this._binder).unbind.apply(_binder3, arguments);
-        };
+                (_binder3 = this._binder).unbind.apply(_binder3, arguments);
+            };
 
-        return Binding;
-    })();
+            return Binding;
+        })();
 
+        return new Binding();
+    }
+
+    var Binding = CreateBindingHolder();
     exports.Binding = Binding;
 
     var DomReacher = (function () {
