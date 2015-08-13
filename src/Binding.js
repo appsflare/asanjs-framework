@@ -25,14 +25,14 @@ export class Binding {
     }
 
     configure() {
-        this._binder.configure.apply(this, arguments);
+        this._binder.configure(...arguments);
     }
 
     bind() {
-        this._binder.bind.apply(this, arguments);
+        this._binder.bind(...arguments);
     }
 
     unbind() {
-        this._binder.unbind.apply(this, arguments);
+        this._binder.unbind(...arguments);
     }
 }

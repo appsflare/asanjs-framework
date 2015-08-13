@@ -36,15 +36,21 @@ System.register([], function (_export) {
                 };
 
                 Binding.prototype.configure = function configure() {
-                    this._binder.configure.apply(this, arguments);
+                    var _binder;
+
+                    (_binder = this._binder).configure.apply(_binder, arguments);
                 };
 
                 Binding.prototype.bind = function bind() {
-                    this._binder.bind.apply(this, arguments);
+                    var _binder2;
+
+                    (_binder2 = this._binder).bind.apply(_binder2, arguments);
                 };
 
                 Binding.prototype.unbind = function unbind() {
-                    this._binder.unbind.apply(this, arguments);
+                    var _binder3;
+
+                    (_binder3 = this._binder).unbind.apply(_binder3, arguments);
                 };
 
                 return Binding;
