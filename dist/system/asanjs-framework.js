@@ -26,7 +26,7 @@ System.register([], function (_export) {
             Binding.prototype.bind = function bind() {
                 var _binder2;
 
-                (_binder2 = this._binder).bind.apply(_binder2, arguments);
+                return (_binder2 = this._binder).bind.apply(_binder2, arguments);
             };
 
             Binding.prototype.unbind = function unbind() {

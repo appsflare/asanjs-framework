@@ -1,6 +1,6 @@
 {
   "name": "asanjs-framework",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "jspm": {
     "main": "dist/system/asanjs-framework.js",
     "directories": {},

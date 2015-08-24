@@ -30,7 +30,7 @@ function CreateBindingHolder() {
         }
 
         bind() {
-            this._binder.bind(...arguments);
+            return this._binder.bind(...arguments);
         }
 
         unbind() {
